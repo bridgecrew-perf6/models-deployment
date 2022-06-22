@@ -1,0 +1,9 @@
+apiVersion: v1
+data:
+  {{ .Values.app.name }}: |
+    {{- toYaml .Values.hosts | nindent 8 }}
+     
+
+kind: ConfigMap
+metadata:
+  name: hosts-config

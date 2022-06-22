@@ -1,0 +1,34 @@
+app:
+  name: droids
+  image: registry.midomain.com/droids
+  tag: 84b513eb
+  port: 8080
+  imagePullSecret: gitlab
+
+ha:
+  replicas: 3
+
+resources:
+  limits:
+    cpu: 500m
+    memory: 500Mi
+  requests:
+    cpu: 100M
+    memory: 200Mi
+
+serviceType: NodePort
+ingress: 
+  enabled: true
+  domain: "prod.droids.com"
+  path: "/"
+
+
+#list of models could be a good idea 
+params:
+  models_file: models-test.yaml
+
+
+hosts:
+  gitlab:
+    host: prod.test.nodomain
+    port: 80
